@@ -11,6 +11,14 @@
   status = 301
   force = true
 
+# Google auto-discovers /sitemap.xml by convention, and it is the path most
+# commonly pasted into Search Console. Astro emits the index as
+# /sitemap-index.xml, so serve it at the conventional path too.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
