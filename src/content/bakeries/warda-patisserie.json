@@ -1,0 +1,35 @@
+{
+  "name": "Warda Patisserie",
+  "slug": "warda-patisserie",
+  "businessId": "warda-001",
+  "publication": "draft",
+  "operational": "operating",
+  "street": "70 W Alexandrine St",
+  "city": "Detroit",
+  "state": "MI",
+  "zip": "48201",
+  "website": "https://wardapatisserie.com",
+  "summary": "Warda Patisserie is a Detroit patisserie owned by Warda Bouguettaya, who won the 2022 James Beard Award for Outstanding Pastry Chef. The bakery is known for tarts, pastries, and breads influenced by Bouguettaya's Algerian heritage and world travels, with items including frangipane galettes, shakshuka buns, quiche, and croquembouche available for special order. A bistro-style seating area allows dine-in alongside coffee. The official website returned a server error at the time of verification, so operational facts below come from the official URL only and no third-party data was used for hours.",
+  "tags": ["french-pastry", "algerian-influence", "james-beard", "tarts", "coffee", "midtown", "seating"],
+  "hoursNote": "The official website wardapatisserie.com returned a 500 error on 2026-09-10 and hours could not be confirmed. Do not rely on this profile for hours. Verify directly before visiting.",
+  "customCakes": "unknown",
+  "customCakeProcess": "Online orders accepted for special orders including croquembouche and menu regulars, per journalism sources. Verify at official site.",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "unknown",
+  "glutenFree": "yes",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "yes",
+  "delivery": "unknown",
+  "dietaryNote": "Gluten-free financiers confirmed available per Eater Detroit description. Verify current GF options at official site.",
+  "sources": [
+    {
+      "url": "https://wardapatisserie.com",
+      "label": "Official website",
+      "checked": "2026-09-10",
+      "note": "Returned HTTP 500 error on both Exa livecrawl and direct curl. No operational facts could be confirmed from official source."
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

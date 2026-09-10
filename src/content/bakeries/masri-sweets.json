@@ -1,0 +1,29 @@
+{
+  "name": "Masri Sweets",
+  "slug": "masri-sweets",
+  "businessId": "masri",
+  "publication": "published",
+  "operational": "operating",
+  "street": "5755 Schaefer Rd",
+  "city": "Dearborn",
+  "state": "MI",
+  "zip": "48126",
+  "phone": "(313) 584-3500",
+  "website": "https://www.masrisweets.com/",
+  "summary": "Palestinian family owned bakery in Dearborn, making Middle Eastern desserts from family recipes since 1990. Baklawa, kunafa, maamoul, namoura and shibeyat, made fresh daily with no added preservatives. Custom cakes are also offered.",
+  "founded": 1990,
+  "tags": ["middle-eastern", "palestinian", "baklawa", "kunafa", "cakes"],
+  "customCakes": "yes",
+  "customCakeProcess": "Custom cakes for birthdays, weddings and holidays are offered. Call the bakery to discuss an order.",
+  "priceExamples": [
+    { "item": "Baklawa, walnut", "price": "from $18", "asOf": "2026-09-10" },
+    { "item": "Baklawa, pistachio", "price": "from $20", "asOf": "2026-09-10" },
+    { "item": "Turkish baklawa", "price": "from $25", "asOf": "2026-09-10" },
+    { "item": "Kunafa naime", "price": "from $24", "asOf": "2026-09-10" },
+    { "item": "Mini maamoul", "price": "from $27", "asOf": "2026-09-10" }
+  ],
+  "sources": [
+    { "url": "https://www.masrisweets.com/", "label": "Official website", "checked": "2026-09-10", "note": "Address, phone, founding year, product list with starting prices, custom cake offering." }
+  ],
+  "verifiedOn": "2026-09-10"
+}

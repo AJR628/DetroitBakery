@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPublishedBakeries } from '../lib/bakery';
+const bakeries = await getPublishedBakeries();
+---
+<Base
+  title="Correct a listing | Detroit Bakery"
+  description="Send a correction to a bakery listing. Corrections from the bakery itself get priority and are usually applied within a week."
+>
+  <section class="wrap narrow">
+    <h1>Correct a listing</h1>
+    <p class="lede">
+      If a detail here is wrong, tell us and we will fix it. If you run the bakery, say so
+      and we will prioritise it. There is no charge for this and never will be.
+    </p>
+
+    <form class="df" name="correction" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thanks/">
+      <input type="hidden" name="form-name" value="correction" />
+      <p class="hp">
+        <label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off" /></label>
+      </p>
+
+      <label>
+        Which bakery
+        <select name="listing" id="listing" required>
+          <option value="">Choose one</option>
+          {bakeries.map((b) => <option value={b.data.slug}>{b.data.name}</option>)}
+          <option value="other">Something else, or a bakery not listed</option>
+        </select>
+      </label>
+
+      <label>
+        What is wrong, and what should it say
+        <textarea name="details" required placeholder="For example: our Sunday hours changed to 9am to 3pm as of last month."></textarea>
+      </label>
+
+      <label>
+        Where can we confirm it
+        <input type="text" name="source" placeholder="A link to your site or menu, or say 'call us'" />
+      </label>
+
+      <label>
+        Your name
+        <input type="text" name="name" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+
+      <label style="font-weight:500;display:flex;gap:0.5rem;align-items:flex-start">
+        <input type="checkbox" name="is-owner" value="yes" style="width:auto;margin-top:0.35rem" />
+        <span>I own or work at this bakery</span>
+      </label>
+
+      <button class="btn" type="submit">Send correction</button>
+    </form>
+
+    <p class="verified">
+      We use your email only to follow up on this correction. We do not add you to a
+      mailing list and we do not pass it on.
+    </p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var p = new URLSearchParams(location.search).get('listing');
+      if (!p) return;
+      var sel = document.getElementById('listing');
+      if (sel && [].some.call(sel.options, function (o) { return o.value === p; })) sel.value = p;
+    })();
+  </script>
+</Base>

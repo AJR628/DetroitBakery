@@ -1,0 +1,33 @@
+{
+  "name": "Avalon International Breads",
+  "slug": "avalon-international-breads",
+  "businessId": "avalon-001",
+  "publication": "draft",
+  "operational": "operating",
+  "city": "Detroit",
+  "state": "MI",
+  "neighborhood": "Midtown",
+  "website": "https://www.avalonbakeryandcafe.com",
+  "summary": "Founded in 1997 by Ann Perrault and Jackie Victor, Avalon International Breads is a Detroit institution using 100% organic flour to produce artisan breads, pastries, and cafe fare. The bakery was established with an explicit social mission to support Detroit's revitalization and maintains an employee-centered culture. The Woodward Avenue location anchors the Midtown neighborhood and serves coffee, sandwiches, and baked goods daily. Wholesale bread is available by the baker's dozen.",
+  "founded": 1997,
+  "tags": ["artisan-bread", "organic", "cafe", "wholesale", "midtown"],
+  "hoursNote": "Hours not confirmed from official website on 2026-09-10. The original avalonbreads.net domain is parked. Please verify current hours at avalonbakeryandcafe.com or by phone.",
+  "customCakes": "unknown",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "yes",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "unknown",
+  "delivery": "unknown",
+  "sources": [
+    {
+      "url": "https://www.avalonbakeryandcafe.com/",
+      "label": "Official website homepage",
+      "checked": "2026-09-10",
+      "note": "Confirmed active site, plant-based cookie offerings, Detroit founding since 1997, cafe operation. Hours not listed on homepage."
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

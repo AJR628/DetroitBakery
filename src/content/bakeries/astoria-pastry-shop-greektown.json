@@ -1,0 +1,34 @@
+{
+  "name": "Astoria Pastry Shop (Greektown)",
+  "slug": "astoria-pastry-shop-greektown",
+  "businessId": "astoria",
+  "publication": "published",
+  "operational": "operating",
+  "street": "541 Monroe St",
+  "city": "Detroit",
+  "state": "MI",
+  "neighborhood": "Greektown",
+  "phone": "(313) 963-9603",
+  "website": "https://www.astoriapastryshop.com/",
+  "summary": "Established by the Teftis family in 1971 in Detroit's Greektown. More than 100 pastries alongside specialty coffees, available to eat in or packaged to take away. Open late every night of the week.",
+  "founded": 1971,
+  "tags": ["greek", "european", "pastries", "cakes", "coffee"],
+  "hours": {
+    "sun": "8am - 10pm",
+    "mon": "8am - 10pm",
+    "tue": "8am - 10pm",
+    "wed": "8am - 10pm",
+    "thu": "8am - 10pm",
+    "fri": "8am - 11pm",
+    "sat": "8am - 11pm"
+  },
+  "customCakes": "unknown",
+  "customCakeLeadTime": "48 hours",
+  "customCakeProcess": "The shop asks that pickup orders be set for a time at least 48 hours from when the order is placed.",
+  "openSunday": "yes",
+  "seating": "yes",
+  "sources": [
+    { "url": "https://www.astoriapastryshop.com/", "label": "Official website", "checked": "2026-09-10", "note": "Both locations, addresses, phone numbers, daily hours, founding year and family, 48 hour pickup notice." }
+  ],
+  "verifiedOn": "2026-09-10"
+}

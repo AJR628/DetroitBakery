@@ -1,0 +1,40 @@
+{
+  "name": "Crispelli's Bakery",
+  "slug": "crispellis-bakery",
+  "businessId": "crispellis-001",
+  "publication": "published",
+  "operational": "operating",
+  "street": "931 N. Main St",
+  "city": "Royal Oak",
+  "state": "MI",
+  "zip": "48067",
+  "phone": "(248) 591-3800",
+  "website": "https://crispellis.com/bakery",
+  "summary": "Crispelli's Bakery is the bread-production hub for the Crispelli's restaurant group, located on North Main Street in Royal Oak. The shop bakes fresh loaves, pastries, sandwiches, and coffee each morning with flavors based on daily market finds, and offers wholesale bread by the baker's dozen for businesses. Seating is available and the menu varies day to day. The bakery is a standalone operation distinct from the several Crispelli's pizzeria locations across Metro Detroit.",
+  "tags": ["italian", "artisan-bread", "pastry", "coffee", "royal-oak", "wholesale"],
+  "hoursNote": "Hours not explicitly listed on the official website. The bakery is described as baking fresh every morning. Call ahead or check crispellis.com for current hours.",
+  "customCakes": "unknown",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "unknown",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "yes",
+  "delivery": "unknown",
+  "sources": [
+    {
+      "url": "https://crispellis.com",
+      "label": "Official website main page",
+      "checked": "2026-09-10",
+      "note": "Confirmed Royal Oak bakery address 931 N. Main St and phone 248-591-3800"
+    },
+    {
+      "url": "https://crispellis.com/bakery",
+      "label": "Official bakery page",
+      "checked": "2026-09-10",
+      "note": "Confirmed bakery concept, fresh daily baking, sandwiches, pastries, coffee, wholesale bread by the baker's dozen"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

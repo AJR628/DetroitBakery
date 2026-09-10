@@ -1,0 +1,43 @@
+{
+  "name": "Have Another Slice Bakery",
+  "slug": "have-another-slice-bakery",
+  "businessId": "hasb-001",
+  "publication": "published",
+  "operational": "operating",
+  "city": "Detroit",
+  "state": "MI",
+  "zip": "48205",
+  "phone": "(586) 281-5795",
+  "website": "https://haveanotherslices.com",
+  "summary": "Have Another Slice Bakery specializes in grain-free, vegan-friendly, and dairy-free desserts, with all items made from scratch with no box mixes. The bakery has served the Detroit Metropolitan Area for over eight years and operates under the oversight of a certified professional food manager. Custom cakes, cookies, pies, cobblers, and homemade caramel corn are available. Customers are encouraged to call or contact ahead to reserve custom orders.",
+  "tags": ["grain-free", "vegan", "dairy-free", "custom-cakes", "detroit", "allergen-friendly"],
+  "hours": {
+    "mon": "9am - 7pm",
+    "tue": "9am - 7pm",
+    "wed": "Closed",
+    "thu": "9am - 7pm",
+    "fri": "9am - 7pm",
+    "sat": "12pm - 7pm",
+    "sun": "Closed"
+  },
+  "customCakes": "yes",
+  "customCakeProcess": "Call to reserve custom cakes, cookies, or pies. Contact via phone (586) 281-5795 or email haveanotherslicebakery@gmail.com.",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "yes",
+  "glutenFree": "yes",
+  "halal": "unknown",
+  "openSunday": "no",
+  "seating": "unknown",
+  "delivery": "unknown",
+  "dietaryNote": "Grain-free, vegan-friendly, and dairy-free options confirmed. All items made from scratch.",
+  "sources": [
+    {
+      "url": "https://haveanotherslices.com",
+      "label": "Official website",
+      "checked": "2026-09-10",
+      "note": "Confirmed hours, phone number, grain-free/vegan/dairy-free focus, custom cakes, caramel corn, pies, cookies, cobblers, Detroit Metropolitan Area service area, 8-plus years in operation"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

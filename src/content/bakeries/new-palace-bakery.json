@@ -1,0 +1,41 @@
+{
+  "name": "New Palace Bakery",
+  "slug": "new-palace-bakery",
+  "businessId": "new-palace",
+  "publication": "published",
+  "operational": "operating",
+  "street": "9833 Joseph Campau Ave",
+  "city": "Hamtramck",
+  "state": "MI",
+  "zip": "48212",
+  "phone": "(313) 875-1334",
+  "website": "https://www.newpalacebakery.com/",
+  "summary": "Family owned in Hamtramck since 1908 and self-described as Paczki Headquarters. Polish and European style baking: paczki, bread, cakes, cookies, pies, pastries, and wedding and birthday cakes. Paczki are sold year round, not only at Fat Tuesday.",
+  "founded": 1908,
+  "tags": ["polish", "paczki", "bread", "cakes", "pastries"],
+  "hours": {
+    "sun": "Closed",
+    "mon": "Closed",
+    "tue": "8am - 5pm",
+    "wed": "8am - 5pm",
+    "thu": "8am - 5pm",
+    "fri": "8am - 5pm",
+    "sat": "8am - 4pm"
+  },
+  "hoursNote": "Extended hours run in the days before Paczki Day. In 2026 the bakery opened at 3am on Fat Tuesday.",
+  "customCakes": "yes",
+  "customCakeProcess": "Wedding and birthday cakes are listed as a specialty. Call the bakery to discuss an order.",
+  "paczki": "yes",
+  "paczkiYearRound": "yes",
+  "openSunday": "no",
+  "priceExamples": [
+    { "item": "1 dozen traditional paczki (raspberry, strawberry, blueberry)", "price": "$35.95", "asOf": "2026 season" },
+    { "item": "1 dozen traditional paczki (custard, lemon, apple)", "price": "$35.95", "asOf": "2026 season" },
+    { "item": "1 dozen specialty paczki", "price": "$45.95", "asOf": "2026 season" },
+    { "item": "Half dozen paczki (single flavor)", "price": "$19.95", "asOf": "2026 season" }
+  ],
+  "sources": [
+    { "url": "https://www.newpalacebakery.com/", "label": "Official website", "checked": "2026-09-10", "note": "Address, hours, founding year, 2026 paczki box options and prices, Paczki Day 2026 date and 3am opening." }
+  ],
+  "verifiedOn": "2026-09-10"
+}

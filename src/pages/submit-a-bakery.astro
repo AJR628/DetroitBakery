@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Suggest a bakery | Detroit Bakery"
+  description="Tell us about a Detroit area bakery we are missing. We verify every suggestion against the bakery's own information before listing it."
+>
+  <section class="wrap narrow">
+    <h1>Suggest a bakery</h1>
+    <p class="lede">
+      We would rather list fewer bakeries accurately than every bakery badly, so each
+      suggestion gets checked against the bakery's own published information before it
+      goes up. That takes a little time. Listing is free.
+    </p>
+
+    <form class="df" name="suggestion" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thanks/">
+      <input type="hidden" name="form-name" value="suggestion" />
+      <p class="hp">
+        <label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off" /></label>
+      </p>
+
+      <label>
+        Bakery name
+        <input type="text" name="bakery" required />
+      </label>
+
+      <label>
+        City or neighbourhood
+        <input type="text" name="city" required />
+      </label>
+
+      <label>
+        Website or social account
+        <input type="text" name="website" placeholder="Helps us verify it quickly" />
+      </label>
+
+      <label>
+        What are they known for
+        <textarea name="notes" placeholder="Specialities, and anything useful we should confirm, such as custom cake lead times."></textarea>
+      </label>
+
+      <label>
+        Your email, optional
+        <input type="email" name="email" />
+      </label>
+
+      <button class="btn" type="submit">Send suggestion</button>
+    </form>
+  </section>
+</Base>

@@ -1,0 +1,50 @@
+{
+  "name": "Sister Pie",
+  "slug": "sister-pie",
+  "businessId": "sisterpie-001",
+  "publication": "draft",
+  "operational": "unknown",
+  "street": "8066 Kercheval Ave",
+  "city": "Detroit",
+  "state": "MI",
+  "zip": "48214",
+  "neighborhood": "West Village",
+  "phone": "(313) 447-5550",
+  "website": "https://sisterpie.com",
+  "summary": "Sister Pie was founded by Lisa Ludwinski in 2012 and opened its West Village storefront in 2015, becoming known for seasonal whole pies, slices, cookies, and scones. In May 2025, Ludwinski announced a period of rest and reconfiguration due to a financial crisis, closing regular retail hours on June 8, 2025. As of April 2026 the shop was open to the public every Friday from 7:30am to noon, with baked goods also available Wed through Fri at a nearby wholesale partner. Current status as of September 2026 is unconfirmed from a live official source.",
+  "founded": 2012,
+  "tags": ["pie", "seasonal", "cookies", "scones", "catering", "baking-classes", "west-village"],
+  "hoursNote": "As of April 2026 the shop was open Fridays 7:30am-12pm (or until sold out). Regular full-week retail hours have not resumed. Verify current schedule at sisterpie.com before visiting.",
+  "customCakes": "unknown",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "yes",
+  "glutenFree": "yes",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "unknown",
+  "delivery": "unknown",
+  "dietaryNote": "Gluten-free cookies confirmed on April 2026 menu (Buckwheat Chocolate Chip GF). Vegan items confirmed (Caramelized Banana Muffin listed as vegan).",
+  "priceExamples": [
+    { "item": "9-inch Salted Maple Pie", "price": "$40.00", "asOf": "2026-09-10" },
+    { "item": "9-inch Stone Fruit Cardamom Streusel Pie", "price": "$56.00", "asOf": "2026-09-10" },
+    { "item": "Pie by the slice (seasonal fruit)", "price": "$10.00", "asOf": "2026-09-10" },
+    { "item": "Buckwheat Chocolate Chip cookie (GF)", "price": "$2.85", "asOf": "2026-09-10" },
+    { "item": "Blueberry Cornmeal Scone", "price": "$5.00", "asOf": "2026-09-10" }
+  ],
+  "sources": [
+    {
+      "url": "https://sisterpie.com",
+      "label": "Official website homepage",
+      "checked": "2026-09-10",
+      "note": "Confirmed address and phone. Page showed last update note from January 2026."
+    },
+    {
+      "url": "https://www.sisterpie.com/interlude",
+      "label": "Official website interlude page",
+      "checked": "2026-09-10",
+      "note": "Confirmed interlude status since June 2025, Friday 7:30am-12pm public hours as of early 2026, prices from July 2025 Friday menu, vegan and GF items noted"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "For the Love of Sugar",
+  "slug": "for-the-love-of-sugar",
+  "businessId": "ftlos",
+  "publication": "published",
+  "operational": "operating",
+  "street": "100 Erskine St",
+  "city": "Detroit",
+  "state": "MI",
+  "zip": "48201",
+  "neighborhood": "Midtown",
+  "phone": "(313) 788-7111",
+  "website": "https://fortheloveofsugar.com/",
+  "instagram": "fortheloveofsugardetroit",
+  "summary": "A Midtown cakery and cafe founded by Manal, working in custom cakes, wedding cakes, French macarons, cakes by the slice and specialty coffee. The macaron selection rotates rather than staying fixed. Gluten free and vegan pastries are offered.",
+  "tags": ["custom-cakes", "wedding-cakes", "macarons", "coffee", "vegan"],
+  "hours": {
+    "mon": "10am - 9pm",
+    "tue": "10am - 9pm",
+    "wed": "10am - 9pm",
+    "thu": "10am - 9pm",
+    "fri": "10am - 12am",
+    "sat": "10am - 12am",
+    "sun": "10am - 6pm"
+  },
+  "customCakes": "yes",
+  "customCakeProcess": "The bakery asks for custom cake quotes by email rather than by phone. Wedding cakes are offered.",
+  "vegan": "yes",
+  "glutenFree": "yes",
+  "dietaryNote": "The bakery states it offers an array of gluten free and vegan pastries. Confirm cross contamination handling directly with the bakery if that matters for you.",
+  "openSunday": "yes",
+  "delivery": "yes",
+  "seating": "yes",
+  "sources": [
+    { "url": "https://fortheloveofsugar.com/", "label": "Official website", "checked": "2026-09-10", "note": "Address, phone, hours, email-for-quotes policy on custom cakes, wedding cakes, gluten free and vegan pastries, DoorDash pickup and delivery, Instagram handle." }
+  ],
+  "verifiedOn": "2026-09-10"
+}

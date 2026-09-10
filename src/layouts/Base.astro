@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, canonicalPath, noindex = false, jsonLd } = Astro.props;
+
+const site = Astro.site ?? new URL('https://detroitbakery.com');
+const path = canonicalPath ?? Astro.url.pathname;
+const canonical = new URL(path, site).href;
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Detroit Bakery',
+  url: site.href,
+  publisher: {
+    '@type': 'Organization',
+    name: 'Detroit Bakery',
+    url: site.href,
+  },
+};
+
+const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const nav = [
+  { href: '/bakeries/', label: 'All bakeries' },
+  { href: '/custom-cakes/', label: 'Custom cakes' },
+  { href: '/paczki/', label: 'Paczki' },
+  { href: '/about/', label: 'About' },
+];
+const here = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Detroit Bakery" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
+  </head>
+  <body>
+    <a class="hp" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap bar">
+        <a class="brand" href="/">Detroit<span>Bakery</span></a>
+        <nav class="nav" aria-label="Main">
+          {
+            nav.map((n) => (
+              <a href={n.href} aria-current={here === n.href ? 'page' : undefined}>
+                {n.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <div class="cols">
+          <div>
+            <h4>Browse</h4>
+            <ul>
+              <li><a href="/bakeries/">All bakeries</a></li>
+              <li><a href="/custom-cakes/">Custom cakes and lead times</a></li>
+              <li><a href="/paczki/">Paczki and Fat Tuesday</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>About this guide</h4>
+            <ul>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/editorial-policy/">How we verify</a></li>
+              <li><a href="/contact/">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Bakery owners</h4>
+            <ul>
+              <li><a href="/update-listing/">Correct your listing</a></li>
+              <li><a href="/submit-a-bakery/">Suggest a bakery</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="fine">
+          Detroit Bakery is an independent guide. We are not affiliated with any bakery listed,
+          we do not take payment for inclusion, and a listing is not an endorsement. Hours,
+          prices and policies change. Confirm anything time sensitive with the bakery before
+          you travel or place an order.
+        </p>
+        <p class="fine">&copy; {new Date().getFullYear()} Detroit Bakery</p>
+      </div>
+    </footer>
+  </body>
+</html>

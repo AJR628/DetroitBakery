@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import BakeryCard from '../components/BakeryCard.astro';
+import { getPublishedBakeries, nextPaczkiDay, longDate } from '../lib/bakery';
+
+const bakeries = await getPublishedBakeries();
+const withLeadTime = bakeries.filter((b) => b.data.customCakeLeadTime);
+const featured = bakeries.slice(0, 6);
+const pd = nextPaczkiDay();
+
+const title = 'Detroit Bakery: a verified guide to Detroit area bakeries';
+const description =
+  'An independent, regularly checked guide to bakeries in Detroit and nearby cities. Custom cake lead times, paczki details, hours and dietary options, each with the date we last confirmed it.';
+---
+
+<Base title={title} description={description} canonicalPath="/">
+  <section class="wrap hero">
+    <h1>The Detroit bakery facts that are actually current</h1>
+    <p class="lede">
+      Most bakery lists tell you a place exists. This one tells you what you need to
+      decide: how far ahead a custom cake has to be ordered, who is open on Sunday, who
+      sells paczki year round, and what the bakery itself publishes about prices. Every
+      profile shows the date a person last checked it.
+    </p>
+    <div class="actions">
+      <a class="btn" href="/bakeries/">Browse all {bakeries.length} bakeries</a>
+      <a class="btn ghost" href="/custom-cakes/">Custom cake lead times</a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="note">
+      <p>
+        <strong>Why this exists.</strong> Detroit bakery roundups go stale. Articles still
+        recommend places that changed their hours, stopped taking custom orders, or closed.
+        We keep a small set of listings and re-check them rather than a large set we cannot
+        maintain. If something here is wrong,
+        <a href="/update-listing/">tell us and we will fix it</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Planning something specific</h2>
+    <ul class="grid">
+      <li class="card">
+        <h3><a href="/custom-cakes/">Ordering a custom cake</a></h3>
+        <p class="where">Lead times and ordering process</p>
+        <ul class="facts">
+          <li>
+            {withLeadTime.length > 0
+              ? `${withLeadTime.length} ${withLeadTime.length === 1 ? 'bakery has' : 'bakeries have'} a published lead time or ordering process`
+              : 'Lead times collected bakery by bakery'}
+          </li>
+          <li>The question no listing site answers: how far ahead do I need to ask</li>
+        </ul>
+      </li>
+      <li class="card">
+        <h3><a href="/paczki/">Paczki and Fat Tuesday</a></h3>
+        <p class="where">Next Paczki Day is {longDate(pd)}</p>
+        <ul class="facts">
+          <li>Who sells paczki year round, not just in February</li>
+          <li>Box options and published prices where the bakery lists them</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  {
+    featured.length > 0 && (
+      <section class="wrap">
+        <h2>Recently verified</h2>
+        <ul class="grid">
+          {featured.map((b) => (
+            <BakeryCard bakery={b} />
+          ))}
+        </ul>
+        <p style="margin-top:1.2rem">
+          <a href="/bakeries/">See every bakery we have verified</a>
+        </p>
+      </section>
+    )
+  }
+
+  <section class="wrap narrow">
+    <h2>Own one of these bakeries?</h2>
+    <p>
+      Listings are free and always will be. We are not a lead broker and we do not sell
+      placement above the standard list. If a detail about your bakery is wrong or missing,
+      <a href="/update-listing/">send us a correction</a> and we will update it, usually
+      within a week.
+    </p>
+  </section>
+</Base>

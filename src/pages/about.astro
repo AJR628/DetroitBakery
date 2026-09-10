@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPublishedBakeries } from '../lib/bakery';
+const bakeries = await getPublishedBakeries();
+---
+<Base
+  title="About Detroit Bakery"
+  description="Who runs this guide, what it is for, how it makes money, and what it deliberately does not do."
+>
+  <section class="wrap narrow">
+    <h1>About this guide</h1>
+    <p class="lede">
+      Detroit Bakery is an independent guide to bakeries in Detroit and the cities around
+      it. It exists because the useful facts about a bakery, the ones that decide whether
+      you can actually buy what you need, are scattered, unpublished, or out of date
+      everywhere else.
+    </p>
+
+    <h2>What it tries to do</h2>
+    <p>
+      Answer the specific questions a listing site does not. How far ahead do I have to
+      order a cake. Who is open on Sunday. Who sells paczki in August. What does the
+      bakery itself say about vegan options. We keep a deliberately small number of
+      listings, currently {bakeries.length}, and re-check them, rather than publishing
+      hundreds we cannot maintain.
+    </p>
+
+    <h2>What it is not</h2>
+    <p>
+      It is not a review site, and we do not rank bakeries by quality. We have not eaten
+      at all of these places and we are not going to pretend otherwise. It is not
+      affiliated with any bakery, and a listing is not an endorsement. It is not a lead
+      broker: we do not collect your details and sell them on.
+    </p>
+
+    <h2>How it makes money</h2>
+    <p>
+      Right now, it does not. If that changes it will be through clearly labelled sponsored
+      placement, sold to bakeries, shown in its own area and never mixed into the ordinary
+      listings. Paying will never buy a better position in the standard list, a change to
+      the facts, or removal of anything accurate. Free listings stay free.
+    </p>
+
+    <h2>Corrections</h2>
+    <p>
+      If something here is wrong, please
+      <a href="/update-listing/">tell us</a>. Corrections from a bakery about its own
+      details get priority and we aim to fix them within a week. We would rather be
+      corrected than be wrong.
+    </p>
+  </section>
+</Base>

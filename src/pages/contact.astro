@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Contact | Detroit Bakery"
+  description="Get in touch with Detroit Bakery."
+>
+  <section class="wrap narrow">
+    <h1>Contact</h1>
+    <p class="lede">
+      For a factual correction, the <a href="/update-listing/">correction form</a> is
+      faster because it tells us which listing you mean. For anything else, use this.
+    </p>
+
+    <form class="df" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thanks/">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hp">
+        <label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off" /></label>
+      </p>
+      <label>
+        Your name
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" required></textarea>
+      </label>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </section>
+</Base>

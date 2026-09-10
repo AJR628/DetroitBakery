@@ -1,0 +1,63 @@
+{
+  "name": "MK Cannelle (Cannelle Detroit)",
+  "slug": "mk-cannelle",
+  "businessId": "mkcannelle-001",
+  "publication": "published",
+  "operational": "operating",
+  "street": "45 W Grand River Ave",
+  "city": "Detroit",
+  "state": "MI",
+  "zip": "48226",
+  "phone": "(313) 694-9767",
+  "website": "https://www.mkcannelle.com",
+  "summary": "MK Cannelle is a French patisserie founded by Chef Matt Knio, who trained at the Academie de Versailles and later served as head pastry chef at the Michigan Ritz-Carlton. The Detroit location opened in 2019 and offers handcrafted croissants, tarts, macarons, mousse cakes, and other French pastries alongside specialty coffee. The Detroit shop stays open until 10pm on Fridays and Saturdays, making it a destination for late-evening pastry. Pastries are made in the French tradition with butter, eggs, and cream and are not vegan.",
+  "founded": 2003,
+  "tags": ["french-pastry", "croissants", "macarons", "tarts", "coffee", "detroit", "late-hours"],
+  "hours": {
+    "mon": "6:30am - 8pm",
+    "tue": "6:30am - 8pm",
+    "wed": "6:30am - 8pm",
+    "thu": "6:30am - 8pm",
+    "fri": "6:30am - 10pm",
+    "sat": "7:30am - 10pm",
+    "sun": "7:30am - 6pm"
+  },
+  "customCakes": "yes",
+  "customCakeProcess": "Cake sizes available in 6-inch through full-sheet. Size guide: 6-inch serves 4-6, 8-inch serves 8-10, 10-inch serves 10-13, 12-inch serves 14-16, 14-inch serves 16-25, half-sheet serves 30-35, full-sheet serves 60-100.",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "no",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "yes",
+  "seating": "yes",
+  "delivery": "unknown",
+  "dietaryNote": "Official FAQ states: 'our offerings are not vegan' as pastries use butter, eggs, and cream. Some mousses and creams contain fish-based gelatin. Tiramisu may contain alcohol and is the only item that does. Facility handles milk, eggs, tree nuts, wheat, and soy. Pastries described as halal though pork products are present on site.",
+  "sources": [
+    {
+      "url": "https://www.mkcannelle.com/cannelle-detroit",
+      "label": "Official Cannelle Detroit location page",
+      "checked": "2026-09-10",
+      "note": "Confirmed address, phone, and full weekly hours"
+    },
+    {
+      "url": "https://www.mkcannelle.com/",
+      "label": "Official website homepage",
+      "checked": "2026-09-10",
+      "note": "Confirmed Detroit location address and phone, brand description, multiple locations"
+    },
+    {
+      "url": "https://www.mkcannelle.com/about",
+      "label": "Official about page",
+      "checked": "2026-09-10",
+      "note": "Confirmed founding history: Cannelle Cafe launched in Michigan 2003, Detroit location added 2019, Chef Matt Knio trained at Academie de Versailles"
+    },
+    {
+      "url": "https://www.mkcannelle.com/contact-us",
+      "label": "Official FAQ and contact page",
+      "checked": "2026-09-10",
+      "note": "Confirmed not vegan, halal status with caveats, cake size guide, allergen facility note"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

@@ -1,0 +1,65 @@
+---
+import type { Bakery } from '../lib/bakery';
+import { placeLabel, formatDate } from '../lib/bakery';
+
+interface Props {
+  bakery: Bakery;
+  /** Which decision fact to lead with, so a cake page reads differently from a paczki page. */
+  emphasis?: 'general' | 'cakes' | 'paczki';
+}
+
+const { bakery, emphasis = 'general' } = Astro.props;
+const d = bakery.data;
+
+const facts: { label: string; value: string }[] = [];
+
+if (emphasis === 'cakes') {
+  if (d.customCakeLeadTime) facts.push({ label: 'Lead time', value: d.customCakeLeadTime });
+  if (d.customCakeProcess) facts.push({ label: 'How to order', value: d.customCakeProcess });
+} else if (emphasis === 'paczki') {
+  if (d.paczkiYearRound === 'yes') facts.push({ label: 'Paczki', value: 'Sold year round' });
+  else if (d.paczki === 'yes') facts.push({ label: 'Paczki', value: 'Yes' });
+  if (d.priceExamples.length) {
+    facts.push({ label: 'Published price', value: `${d.priceExamples[0].item}, ${d.priceExamples[0].price}` });
+  }
+} else {
+  if (d.customCakeLeadTime) facts.push({ label: 'Custom cake lead time', value: d.customCakeLeadTime });
+  if (d.openSunday === 'yes') facts.push({ label: 'Sunday', value: 'Open' });
+  else if (d.openSunday === 'no') facts.push({ label: 'Sunday', value: 'Closed' });
+  if (d.vegan === 'yes') facts.push({ label: 'Vegan options', value: 'Yes, per the bakery' });
+}
+
+const shown = facts.slice(0, 3);
+const tags = d.tags.slice(0, 4);
+---
+
+<li class="card">
+  <h3><a href={`/bakeries/${d.slug}/`}>{d.name}</a></h3>
+  <p class="where">{placeLabel(d)}</p>
+
+  {
+    shown.length > 0 && (
+      <ul class="facts">
+        {shown.map((f) => (
+          <li>
+            <b>{f.label}:</b> {f.value}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    tags.length > 0 && (
+      <ul class="tags">
+        {tags.map((t) => (
+          <li class="tag">{t.replace(/-/g, ' ')}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  <p class="verified">
+    <b>Verified</b> {formatDate(d.verifiedOn)}
+  </p>
+</li>

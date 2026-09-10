@@ -1,0 +1,33 @@
+{
+  "name": "Astoria Pastry Shop (Royal Oak)",
+  "slug": "astoria-pastry-shop-royal-oak",
+  "businessId": "astoria",
+  "publication": "published",
+  "operational": "operating",
+  "street": "320 S Main St",
+  "city": "Royal Oak",
+  "state": "MI",
+  "phone": "(248) 582-9220",
+  "website": "https://www.astoriapastryshop.com/",
+  "summary": "The Royal Oak location of Astoria Pastry Shop, the Greektown bakery established by the Teftis family in 1971. Same pastry counter and specialty coffee, open 8am to 11pm every day.",
+  "founded": 1971,
+  "tags": ["greek", "european", "pastries", "cakes", "coffee"],
+  "hours": {
+    "sun": "8am - 11pm",
+    "mon": "8am - 11pm",
+    "tue": "8am - 11pm",
+    "wed": "8am - 11pm",
+    "thu": "8am - 11pm",
+    "fri": "8am - 11pm",
+    "sat": "8am - 11pm"
+  },
+  "customCakes": "unknown",
+  "customCakeLeadTime": "48 hours",
+  "customCakeProcess": "The shop asks that pickup orders be set for a time at least 48 hours from when the order is placed.",
+  "openSunday": "yes",
+  "seating": "yes",
+  "sources": [
+    { "url": "https://www.astoriapastryshop.com/", "label": "Official website", "checked": "2026-09-10", "note": "Royal Oak address, phone, daily hours, 48 hour pickup notice." }
+  ],
+  "verifiedOn": "2026-09-10"
+}

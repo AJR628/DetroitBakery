@@ -1,0 +1,258 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import {
+  getPublishedBakeries,
+  placeLabel,
+  fullAddress,
+  directionsUrl,
+  telHref,
+  hoursRows,
+  openingHoursSpec,
+  formatDate,
+  type Bakery,
+} from '../../lib/bakery';
+
+export const getStaticPaths = (async () => {
+  const bakeries = await getPublishedBakeries();
+  return bakeries.map((b) => ({ params: { slug: b.data.slug }, props: { bakery: b } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  bakery: Bakery;
+}
+const { bakery } = Astro.props;
+const d = bakery.data;
+
+const addr = fullAddress(d);
+const dirs = directionsUrl(d);
+const tel = telHref(d.phone);
+const rows = hoursRows(d.hours);
+const site = Astro.site ?? new URL('https://detroitbakery.com');
+const pageUrl = new URL(`/bakeries/${d.slug}/`, site).href;
+
+const title = `${d.name}, ${placeLabel(d)} | Detroit Bakery`;
+const description = `${d.name} in ${placeLabel(d)}. ${
+  d.customCakeLeadTime ? `Custom cake lead time: ${d.customCakeLeadTime}. ` : ''
+}Hours, ordering details and what we have confirmed, last checked ${formatDate(d.verifiedOn)}.`;
+
+// Bakery is the most specific LocalBusiness subtype. We emit only facts we hold,
+// and deliberately no aggregateRating, because we collect no reviews.
+const bizLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Bakery',
+  name: d.name,
+  url: pageUrl,
+  ...(d.website ? { sameAs: [d.website] } : {}),
+  ...(d.phone ? { telephone: d.phone } : {}),
+  ...(addr
+    ? {
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: d.street,
+          addressLocality: d.city,
+          addressRegion: d.state,
+          ...(d.zip ? { postalCode: d.zip } : {}),
+          addressCountry: 'US',
+        },
+      }
+    : {}),
+  ...(d.lat && d.lng
+    ? { geo: { '@type': 'GeoCoordinates', latitude: d.lat, longitude: d.lng } }
+    : {}),
+  ...(openingHoursSpec(d.hours) ? { openingHoursSpecification: openingHoursSpec(d.hours) } : {}),
+};
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.href },
+    { '@type': 'ListItem', position: 2, name: 'All bakeries', item: new URL('/bakeries/', site).href },
+    { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
+  ],
+};
+
+type Row = { label: string; value: string; unknown?: boolean };
+const known: Row[] = [];
+
+if (d.customCakes === 'yes') {
+  known.push({ label: 'Custom cakes', value: 'Yes, per the bakery' });
+} else if (d.customCakes === 'no') {
+  known.push({ label: 'Custom cakes', value: 'Not offered' });
+} else {
+  known.push({ label: 'Custom cakes', value: 'Not confirmed', unknown: true });
+}
+if (d.customCakeLeadTime) known.push({ label: 'Lead time', value: d.customCakeLeadTime });
+if (d.paczki === 'yes') {
+  known.push({
+    label: 'Paczki',
+    value: d.paczkiYearRound === 'yes' ? 'Yes, sold year round' : 'Yes',
+  });
+}
+if (d.openSunday !== 'unknown') {
+  known.push({ label: 'Sunday', value: d.openSunday === 'yes' ? 'Open' : 'Closed' });
+}
+if (d.vegan === 'yes') known.push({ label: 'Vegan options', value: 'Yes, per the bakery' });
+if (d.glutenFree === 'yes') known.push({ label: 'Gluten free options', value: 'Yes, per the bakery' });
+if (d.halal === 'yes') known.push({ label: 'Halal', value: 'Yes, per the bakery' });
+if (d.seating === 'yes') known.push({ label: 'Seating', value: 'Yes' });
+if (d.delivery === 'yes') known.push({ label: 'Delivery or pickup app', value: 'Yes' });
+if (d.founded) known.push({ label: 'Operating since', value: String(d.founded) });
+---
+
+<Base title={title} description={description} jsonLd={[bizLd, breadcrumb]}>
+  <nav class="wrap crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/bakeries/">All bakeries</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">{d.name}</li>
+    </ol>
+  </nav>
+
+  <article class="wrap">
+    <header class="prof-head">
+      <h1>{d.name}</h1>
+      <p class="lede">{placeLabel(d)}{addr ? ` · ${addr}` : ''}</p>
+      <p class="verified"><b>Last verified</b> {formatDate(d.verifiedOn)}</p>
+
+      <div class="actions">
+        {d.website && (
+          <a class="btn" href={d.website} target="_blank" rel="noopener noreferrer">
+            Official website
+          </a>
+        )}
+        {d.orderUrl && (
+          <a class="btn" href={d.orderUrl} target="_blank" rel="noopener noreferrer">
+            Order or inquire
+          </a>
+        )}
+        {tel && <a class="btn ghost" href={tel}>Call {d.phone}</a>}
+        {dirs && (
+          <a class="btn ghost" href={dirs} target="_blank" rel="noopener noreferrer">
+            Directions
+          </a>
+        )}
+      </div>
+    </header>
+
+    <p>{d.summary}</p>
+
+    {
+      known.length > 0 && (
+        <dl class="factgrid">
+          {known.map((r) => (
+            <div>
+              <dt>{r.label}</dt>
+              <dd class={r.unknown ? 'unknown' : undefined}>{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+    {
+      d.customCakeProcess && (
+        <div class="callout">
+          <h2 style="margin-top:0;font-size:1.1rem">Ordering a custom cake here</h2>
+          <p>{d.customCakeProcess}</p>
+          {d.customCakeLeadTime && (
+            <p>
+              <strong>Stated lead time: {d.customCakeLeadTime}.</strong> Treat that as the
+              minimum, not a guarantee. Busy weekends and holidays fill up earlier.
+            </p>
+          )}
+        </div>
+      )
+    }
+
+    {
+      rows.length > 0 && (
+        <section>
+          <h2>Hours</h2>
+          <table class="hours">
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.day}</th>
+                  <td>{r.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {d.hoursNote && <p style="margin-top:0.8rem">{d.hoursNote}</p>}
+          <p class="verified" style="margin-top:0.8rem">
+            Hours as published by the bakery on {formatDate(d.verifiedOn)}. Confirm before a
+            special trip.
+          </p>
+        </section>
+      )
+    }
+
+    {
+      d.priceExamples.length > 0 && (
+        <section>
+          <h2>Prices the bakery publishes</h2>
+          <div class="cmp-scroll">
+            <table class="cmp">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">As published</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.priceExamples.map((p) => (
+                  <tr>
+                    <td>{p.item}</td>
+                    <td>{p.price}</td>
+                    <td>{p.asOf}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="verified">
+            These are prices the bakery published, copied as written. They are not quotes and
+            they are not ours. Confirm current pricing with the bakery.
+          </p>
+        </section>
+      )
+    }
+
+    {
+      d.dietaryNote && (
+        <div class="note">
+          <p>
+            <strong>On dietary options.</strong> {d.dietaryNote}
+          </p>
+        </div>
+      )
+    }
+
+    <section class="sources">
+      <h2>Where this came from</h2>
+      <ol>
+        {
+          d.sources.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+              , checked {formatDate(s.checked)}
+              {s.note ? `. ${s.note}` : ''}
+            </li>
+          ))
+        }
+      </ol>
+      <p>
+        We compile these details from the bakery's own published information. We are not
+        affiliated with {d.name} and this listing is not an endorsement. Spotted something
+        wrong? <a href={`/update-listing/?listing=${d.slug}`}>Send a correction</a>.
+      </p>
+    </section>
+  </article>
+</Base>

@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Page not found | Detroit Bakery"
+  description="That page does not exist."
+  noindex={true}
+>
+  <section class="wrap narrow">
+    <h1>That page does not exist</h1>
+    <p class="lede">
+      The link may be old, or a listing may have been removed because the bakery closed.
+      We take closed bakeries down rather than leaving them up to mislead people.
+    </p>
+    <p>
+      <a class="btn" href="/bakeries/">Browse all bakeries</a>
+      <a class="btn ghost" href="/">Home</a>
+    </p>
+  </section>
+</Base>

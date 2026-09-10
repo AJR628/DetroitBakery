@@ -1,0 +1,38 @@
+{
+  "name": "Good Cakes and Bakes",
+  "slug": "good-cakes-and-bakes",
+  "businessId": "gcb-001",
+  "publication": "published",
+  "operational": "operating",
+  "city": "Detroit",
+  "state": "MI",
+  "neighborhood": "Avenue of Fashion",
+  "website": "https://goodcakesandbakes.com",
+  "summary": "Good Cakes and Bakes was founded in September 2013 by April Anderson and Michelle Anderson, with April serving as pastry chef. The bakery focuses on wholesome, organic baked goods made with natural and locally grown ingredients when available. April Anderson is a James Beard Foundation Boot Camp alum and was honored as a James Beard Media Awards pastry chef in 2018. The bakery offers celebration and custom cakes and ships nationwide.",
+  "founded": 2013,
+  "tags": ["organic", "custom-cakes", "celebration-cakes", "shipping", "black-owned", "james-beard"],
+  "customCakes": "yes",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "unknown",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "unknown",
+  "delivery": "yes",
+  "sources": [
+    {
+      "url": "https://goodcakesandbakes.com",
+      "label": "Official website homepage",
+      "checked": "2026-09-10",
+      "note": "Confirmed nationwide delivery, celebration cakes, baked goods offering"
+    },
+    {
+      "url": "https://goodcakesandbakes.com/about",
+      "label": "Official website about page",
+      "checked": "2026-09-10",
+      "note": "Confirmed founding date September 2013, owners April and Michelle Anderson, organic mission, James Beard Foundation connections"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

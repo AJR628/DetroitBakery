@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import BakeryCard from '../../components/BakeryCard.astro';
+import { getPublishedBakeries, placeLabel } from '../../lib/bakery';
+
+const bakeries = await getPublishedBakeries();
+
+const cities = [...new Set(bakeries.map((b) => b.data.city))].sort();
+
+const title = `All Detroit area bakeries we have verified | Detroit Bakery`;
+const description = `Every bakery in our guide, with the decision facts and the date each was last checked. Filter by city, custom cake availability, Sunday opening and dietary options.`;
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Verified Detroit area bakeries',
+  numberOfItems: bakeries.length,
+  itemListElement: bakeries.map((b, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(`/bakeries/${b.data.slug}/`, Astro.site ?? 'https://detroitbakery.com').href,
+    name: b.data.name,
+  })),
+};
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://detroitbakery.com/' },
+    { '@type': 'ListItem', position: 2, name: 'All bakeries', item: 'https://detroitbakery.com/bakeries/' },
+  ],
+};
+---
+
+<Base title={title} description={description} jsonLd={[itemList, breadcrumb]}>
+  <nav class="wrap crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">All bakeries</li>
+    </ol>
+  </nav>
+
+  <section class="wrap">
+    <h1>Every bakery we have verified</h1>
+    <p class="lede">
+      {bakeries.length} bakeries in Detroit and nearby cities. We only list a bakery once we
+      have confirmed it against the bakery's own website or a direct conversation, and each
+      profile carries the date we last checked. This list is deliberately small and current
+      rather than large and stale.
+    </p>
+
+    <div class="filters">
+      <label for="q">Search</label>
+      <input type="search" id="q" placeholder="Name or specialty, e.g. paczki" autocomplete="off" />
+
+      <label for="city">City</label>
+      <select id="city">
+        <option value="">Any</option>
+        {cities.map((c) => <option value={c}>{c}</option>)}
+      </select>
+
+      <label for="attr">Shows</label>
+      <select id="attr">
+        <option value="">Everything</option>
+        <option value="cakes">Takes custom cakes</option>
+        <option value="sunday">Open Sunday</option>
+        <option value="paczki">Sells paczki</option>
+        <option value="vegan">Vegan options</option>
+        <option value="glutenfree">Gluten free options</option>
+      </select>
+
+      <button class="btn ghost" id="reset" type="button">Reset</button>
+    </div>
+
+    <p class="result-count" id="count" role="status" aria-live="polite"></p>
+
+    <ul class="grid" id="list">
+      {
+        bakeries.map((b) => (
+          <div
+            data-item
+            data-name={b.data.name.toLowerCase()}
+            data-tags={b.data.tags.join(' ')}
+            data-city={b.data.city}
+            data-place={placeLabel(b.data).toLowerCase()}
+            data-cakes={b.data.customCakes}
+            data-sunday={b.data.openSunday}
+            data-paczki={b.data.paczki}
+            data-vegan={b.data.vegan}
+            data-glutenfree={b.data.glutenFree}
+            style="display:contents"
+          >
+            <BakeryCard bakery={b} />
+          </div>
+        ))
+      }
+    </ul>
+
+    <p id="empty" hidden class="note">
+      No bakery in our guide matches that combination. That may mean we have not confirmed
+      the detail yet rather than that no such bakery exists. Try removing a filter, or
+      <a href="/submit-a-bakery/">tell us about a bakery we are missing</a>.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>A note on the filters.</strong> A bakery only appears under a filter when
+        the bakery itself has confirmed it. If we have not confirmed something, we leave it
+        unknown rather than guessing, so an absence here means we do not know, not that the
+        answer is no.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('q');
+      var city = document.getElementById('city');
+      var attr = document.getElementById('attr');
+      var reset = document.getElementById('reset');
+      var count = document.getElementById('count');
+      var empty = document.getElementById('empty');
+      var items = Array.prototype.slice.call(document.querySelectorAll('[data-item]'));
+      var total = items.length;
+
+      function apply() {
+        var term = (q.value || '').trim().toLowerCase();
+        var c = city.value;
+        var a = attr.value;
+        var shown = 0;
+
+        items.forEach(function (el) {
+          var okTerm =
+            !term ||
+            el.dataset.name.indexOf(term) > -1 ||
+            el.dataset.tags.indexOf(term) > -1 ||
+            el.dataset.place.indexOf(term) > -1;
+          var okCity = !c || el.dataset.city === c;
+          var okAttr = true;
+          if (a === 'cakes') okAttr = el.dataset.cakes === 'yes';
+          if (a === 'sunday') okAttr = el.dataset.sunday === 'yes';
+          if (a === 'paczki') okAttr = el.dataset.paczki === 'yes';
+          if (a === 'vegan') okAttr = el.dataset.vegan === 'yes';
+          if (a === 'glutenfree') okAttr = el.dataset.glutenfree === 'yes';
+
+          var show = okTerm && okCity && okAttr;
+          el.style.display = show ? 'contents' : 'none';
+          if (show) shown++;
+        });
+
+        count.textContent =
+          shown === total
+            ? 'Showing all ' + total + ' bakeries'
+            : 'Showing ' + shown + ' of ' + total + ' bakeries';
+        empty.hidden = shown !== 0;
+
+        var p = new URLSearchParams();
+        if (term) p.set('q', term);
+        if (c) p.set('city', c);
+        if (a) p.set('show', a);
+        var hash = p.toString();
+        history.replaceState(null, '', hash ? '#' + hash : location.pathname);
+      }
+
+      function restore() {
+        if (!location.hash) return;
+        var p = new URLSearchParams(location.hash.slice(1));
+        if (p.get('q')) q.value = p.get('q');
+        if (p.get('city')) city.value = p.get('city');
+        if (p.get('show')) attr.value = p.get('show');
+      }
+
+      [q, city, attr].forEach(function (el) {
+        el.addEventListener('input', apply);
+        el.addEventListener('change', apply);
+      });
+      reset.addEventListener('click', function () {
+        q.value = '';
+        city.value = '';
+        attr.value = '';
+        apply();
+        q.focus();
+      });
+
+      restore();
+      apply();
+    })();
+  </script>
+</Base>

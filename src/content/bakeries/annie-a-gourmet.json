@@ -1,0 +1,30 @@
+{
+  "name": "Annie A Gourmet",
+  "slug": "annie-a-gourmet",
+  "businessId": "annieag-001",
+  "publication": "draft",
+  "operational": "unknown",
+  "city": "Grosse Pointe",
+  "state": "MI",
+  "website": "https://annieagourmet.com",
+  "summary": "Annie A Gourmet offers artisan sourdough breads and sweets with local pickup in Grosse Pointe, and is noted for appearing at the Royal Oak Farmers Market. The website loaded but displayed only a framework with a Twitter meta description of Coming Soon, suggesting the site was not yet publishing full content at time of verification. No hours, address, phone, or prices could be confirmed from the live official site.",
+  "tags": ["sourdough", "artisan-bread", "organic", "grosse-pointe", "farmers-market"],
+  "customCakes": "unknown",
+  "paczki": "unknown",
+  "paczkiYearRound": "unknown",
+  "vegan": "unknown",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "unknown",
+  "seating": "unknown",
+  "delivery": "unknown",
+  "sources": [
+    {
+      "url": "https://annieagourmet.com",
+      "label": "Official website",
+      "checked": "2026-09-10",
+      "note": "Site loaded with HTML framework. Meta description confirmed artisan sourdough and Grosse Pointe pickup. Twitter card description read 'Coming Soon'. No operational details rendered."
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}

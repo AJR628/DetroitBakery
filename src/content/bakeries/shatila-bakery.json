@@ -1,0 +1,55 @@
+{
+  "name": "Shatila Bakery",
+  "slug": "shatila-bakery",
+  "businessId": "shatila-001",
+  "publication": "published",
+  "operational": "operating",
+  "street": "14300 W Warren Ave",
+  "city": "Dearborn",
+  "state": "MI",
+  "zip": "48126",
+  "phone": "(313) 582-1952",
+  "website": "https://shatilabakery.com",
+  "summary": "Founded in 1979 by Riad Shatila, Shatila Bakery is a family-run institution specializing in authentic Mediterranean pastries including baklawa made with Turkish pistachios, Brazilian cashews, and California walnuts in thin filo dough. The Dearborn flagship stays open late seven days a week, serving a broad range of Lebanese sweets. Custom cakes are available via a dedicated email contact. The bakery ships nationally and operates additional locations in Dearborn Heights and West Bloomfield.",
+  "founded": 1979,
+  "tags": ["middle-eastern", "baklava", "custom-cakes", "shipping", "late-night", "halal"],
+  "hours": {
+    "mon": "8am - 11pm",
+    "tue": "8am - 11pm",
+    "wed": "8am - 11pm",
+    "thu": "8am - 11pm",
+    "fri": "8am - 12am",
+    "sat": "8am - 12am",
+    "sun": "8am - 11pm"
+  },
+  "customCakes": "yes",
+  "customCakeProcess": "Custom cake inquiries handled via shatilacakes@gmail.com",
+  "paczki": "no",
+  "paczkiYearRound": "no",
+  "vegan": "unknown",
+  "glutenFree": "unknown",
+  "halal": "unknown",
+  "openSunday": "yes",
+  "seating": "unknown",
+  "delivery": "yes",
+  "priceExamples": [
+    { "item": "Assorted Fillo Baklawa Mix (tray)", "price": "$23.50", "asOf": "2026-09-10" },
+    { "item": "Baklawa Almond Tray", "price": "$22.50", "asOf": "2026-09-10" },
+    { "item": "Baklawa Pistachio Tray", "price": "$26.50", "asOf": "2026-09-10" }
+  ],
+  "sources": [
+    {
+      "url": "https://shatilabakery.com/pages/contact",
+      "label": "Official website contact page",
+      "checked": "2026-09-10",
+      "note": "Confirmed Dearborn address, hours Mon-Sun, phone number, custom cake email contact"
+    },
+    {
+      "url": "https://shatilabakery.com/",
+      "label": "Official website homepage",
+      "checked": "2026-09-10",
+      "note": "Confirmed founding year 1979, baklawa product prices, nationwide shipping"
+    }
+  ],
+  "verifiedOn": "2026-09-10"
+}
