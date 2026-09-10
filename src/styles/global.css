@@ -113,25 +113,44 @@ a:hover { color: var(--rose-deep); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 1.6rem 0; }
 
 /* ---------- hero ---------- */
-.hero {
-  background: linear-gradient(180deg, #f7ece7 0%, var(--cream) 78%);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
+/*
+ * .hero-sky carries the gradient and wraps ONLY the text, so its final stop
+ * lands exactly where the artwork begins. That stop (#fcf9f0) is sampled from
+ * the top row of hero-street.jpg, which makes the join seamless and lets the
+ * illustration's sky appear to continue up behind the headline.
+ */
+.hero { position: relative; border-bottom: 1px solid var(--line); overflow: hidden; }
+
+.hero-sky {
+  background:
+    radial-gradient(115% 90% at 50% 100%, rgba(255, 252, 246, 0.5) 0%, rgba(255, 252, 246, 0) 70%),
+    linear-gradient(
+      180deg,
+      #efd9d1 0%,
+      #f3e1d9 26%,
+      #f7e9df 52%,
+      #faf2e8 76%,
+      #fcf9f0 100%
+    );
 }
 .hero-inner {
-  padding-block: clamp(2.8rem, 7vw, 5rem) clamp(1.6rem, 3vw, 2.4rem);
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(1.9rem, 4.6vw, 3.1rem) clamp(1.5rem, 3vw, 2.3rem);
   text-align: center;
 }
 .hero-copy { max-width: 30ch; margin-inline: auto; }
-.hero h1 { margin-bottom: 0.3em; text-wrap: balance; }
+.hero h1 { margin-bottom: 0.32em; text-wrap: balance; }
+.hero .eyebrow { color: var(--rose); opacity: 0.6; }
 .hero .lede {
   font-size: clamp(1rem, 1.5vw, 1.14rem);
-  color: var(--ink); max-width: 42ch; margin: 0 auto 1.7rem;
+  color: var(--ink); max-width: 42ch; margin: 0 auto 1.55rem;
 }
 .hero .actions { justify-content: center; margin-bottom: 0; }
 .hero-band {
+  position: relative; z-index: 0;
   display: block; width: 100%; max-width: 1500px; margin: 0 auto;
-  height: auto; object-fit: cover; object-position: bottom;
+  height: auto; margin-top: -1px;
 }
 .hero-band.failed { display: none; }
 .folk-band.failed { background-image: none !important; background: var(--blush-soft); }
