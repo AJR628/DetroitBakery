@@ -28,6 +28,10 @@ const orgLd = {
 };
 
 const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Set PUBLIC_GA4_ID in Netlify to switch analytics on. Absent, nothing loads,
+// so local and preview builds stay out of the numbers.
+const ga4 = import.meta.env.PUBLIC_GA4_ID;
 const nav = [
   { href: '/bakeries/', label: 'All bakeries' },
   { href: '/custom-cakes/', label: 'Custom cakes' },
@@ -57,6 +61,23 @@ const here = Astro.url.pathname;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
+
+    {
+      ga4 && (
+        <>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4}`} />
+          <script
+            is:inline
+            set:html={`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${ga4}', { anonymize_ip: true });
+            `}
+          />
+        </>
+      )
+    }
   </head>
   <body>
     <a class="hp" href="#main">Skip to content</a>
