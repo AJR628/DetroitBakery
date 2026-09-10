@@ -112,16 +112,22 @@ if (d.founded) known.push({ label: 'Operating since', value: String(d.founded) }
     </ol>
   </nav>
 
-  <article class="wrap">
-    <header class="prof-head">
+  <section class="prof-hero">
+    <div class="wrap">
+      <span class="eyebrow">{placeLabel(d)}</span>
       <h1>{d.name}</h1>
-      <p class="lede">{placeLabel(d)}{addr ? ` · ${addr}` : ''}</p>
-      <p class="verified"><b>Last verified</b> {formatDate(d.verifiedOn)}</p>
+      {addr && <p class="place">{addr}</p>}
+      <span class="stamp" style="border:0;padding-top:0.9rem;width:auto">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M6.2 11.4 3 8.2l1.1-1.1 2.1 2.1L11.9 3.5 13 4.6z" fill="currentColor" />
+        </svg>
+        checked {formatDate(d.verifiedOn)}
+      </span>
 
-      <div class="actions">
+      <div class="actions" style="margin-bottom:0">
         {d.website && (
           <a class="btn" href={d.website} target="_blank" rel="noopener noreferrer">
-            Official website
+            Visit their site
           </a>
         )}
         {d.orderUrl && (
@@ -129,15 +135,17 @@ if (d.founded) known.push({ label: 'Operating since', value: String(d.founded) }
             Order or inquire
           </a>
         )}
-        {tel && <a class="btn ghost" href={tel}>Call {d.phone}</a>}
+        {tel && <a class="btn ghost" href={tel}>{d.phone}</a>}
         {dirs && (
           <a class="btn ghost" href={dirs} target="_blank" rel="noopener noreferrer">
             Directions
           </a>
         )}
       </div>
-    </header>
+    </div>
+  </section>
 
+  <article class="wrap band" style="padding-top:clamp(2rem,4vw,3rem)">
     <p>{d.summary}</p>
 
     {
@@ -183,7 +191,7 @@ if (d.founded) known.push({ label: 'Operating since', value: String(d.founded) }
             </tbody>
           </table>
           {d.hoursNote && <p style="margin-top:0.8rem">{d.hoursNote}</p>}
-          <p class="verified" style="margin-top:0.8rem">
+          <p class="stamp" style="border:0;padding-top:0.4rem" style="margin-top:0.8rem">
             Hours as published by the bakery on {formatDate(d.verifiedOn)}. Confirm before a
             special trip.
           </p>
@@ -215,7 +223,7 @@ if (d.founded) known.push({ label: 'Operating since', value: String(d.founded) }
               </tbody>
             </table>
           </div>
-          <p class="verified">
+          <p class="stamp" style="border:0;padding-top:0.4rem">
             These are prices the bakery published, copied as written. They are not quotes and
             they are not ours. Confirm current pricing with the bakery.
           </p>

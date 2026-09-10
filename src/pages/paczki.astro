@@ -39,8 +39,11 @@ const breadcrumb = {
     </ol>
   </nav>
 
-  <section class="wrap">
-    <h1>Paczki in Detroit</h1>
+  <div class="folk-band" style="background-image:url('/img/wycinanki.jpg');border-top:0" role="presentation"></div>
+
+  <section class="wrap band" style="padding-bottom:0">
+    <span class="eyebrow">Hamtramck and beyond</span>
+    <h1>P&#261;czki in Detroit</h1>
     <p class="lede">
       Paczki Day {year} falls on <strong>{longDate(pd)}</strong>. In this part of Michigan
       that is a genuine event rather than a novelty, and the bakeries that do it properly
@@ -113,7 +116,7 @@ const breadcrumb = {
               </table>
             </div>
             {b.data.hoursNote && <p>{b.data.hoursNote}</p>}
-            <p class="verified">Checked {formatDate(b.data.verifiedOn)}</p>
+            <p class="stamp" style="border:0;padding-top:0.4rem">Checked {formatDate(b.data.verifiedOn)}</p>
           </div>
         ))}
       </section>

@@ -62,7 +62,10 @@ const here = Astro.url.pathname;
     <a class="hp" href="#main">Skip to content</a>
     <header class="site-head">
       <div class="wrap bar">
-        <a class="brand" href="/">Detroit<span>Bakery</span></a>
+        <a class="brand" href="/" aria-label="Detroit Bakery, home">
+          <span class="b1">detroit</span>
+          <span class="b2">Bakery</span>
+        </a>
         <nav class="nav" aria-label="Main">
           {
             nav.map((n) => (
@@ -91,7 +94,7 @@ const here = Astro.url.pathname;
             </ul>
           </div>
           <div>
-            <h4>About this guide</h4>
+            <h4>The guide</h4>
             <ul>
               <li><a href="/about/">About</a></li>
               <li><a href="/editorial-policy/">How we verify</a></li>
@@ -99,7 +102,7 @@ const here = Astro.url.pathname;
             </ul>
           </div>
           <div>
-            <h4>Bakery owners</h4>
+            <h4>For bakers</h4>
             <ul>
               <li><a href="/update-listing/">Correct your listing</a></li>
               <li><a href="/submit-a-bakery/">Suggest a bakery</a></li>
@@ -107,10 +110,9 @@ const here = Astro.url.pathname;
           </div>
         </div>
         <p class="fine">
-          Detroit Bakery is an independent guide. We are not affiliated with any bakery listed,
-          we do not take payment for inclusion, and a listing is not an endorsement. Hours,
-          prices and policies change. Confirm anything time sensitive with the bakery before
-          you travel or place an order.
+          An independent guide. Not affiliated with any bakery listed, no payment for
+          inclusion, and a listing is not an endorsement. Hours and prices change, so
+          confirm anything time sensitive before you travel.
         </p>
         <p class="fine">&copy; {new Date().getFullYear()} Detroit Bakery</p>
       </div>

@@ -43,12 +43,11 @@ const breadcrumb = {
   </nav>
 
   <section class="wrap">
-    <h1>Every bakery we have verified</h1>
-    <p class="lede">
-      {bakeries.length} bakeries in Detroit and nearby cities. We only list a bakery once we
-      have confirmed it against the bakery's own website or a direct conversation, and each
-      profile carries the date we last checked. This list is deliberately small and current
-      rather than large and stale.
+    <span class="eyebrow">the whole guide</span>
+    <h1>Every bakery, checked by hand</h1>
+    <p class="lede" style="max-width:52ch">
+      {bakeries.length} bakeries across Detroit, Hamtramck, Dearborn and the near suburbs.
+      Filter by city or by what you need.
     </p>
 
     <div class="filters">
@@ -104,14 +103,10 @@ const breadcrumb = {
       <a href="/submit-a-bakery/">tell us about a bakery we are missing</a>.
     </p>
 
-    <div class="note">
-      <p>
-        <strong>A note on the filters.</strong> A bakery only appears under a filter when
-        the bakery itself has confirmed it. If we have not confirmed something, we leave it
-        unknown rather than guessing, so an absence here means we do not know, not that the
-        answer is no.
-      </p>
-    </div>
+    <p class="note" style="font-size:0.88rem">
+      A bakery appears under a filter only when the bakery itself has confirmed it. A blank
+      means we have not checked yet, never that the answer is no.
+    </p>
   </section>
 
   <script is:inline>

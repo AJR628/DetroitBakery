@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  img: string;
+  alt: string;
+  pill: string;
+  label: string;
+  sub?: string;
+  eager?: boolean;
+}
+const { href, img, alt, pill, label, sub, eager = false } = Astro.props;
+---
+
+<li>
+  <a class="tile" href={href}>
+    <span class="tile-art">
+      <img
+        src={img}
+        alt={alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        width="1000"
+        height="671"
+      />
+      <span class="tile-pill">{pill}</span>
+    </span>
+    <span class="tile-label">{label}</span>
+    {sub && <span class="tile-sub">{sub}</span>}
+  </a>
+</li>

@@ -123,3 +123,7 @@ export function longDate(d: Date): string {
     timeZone: 'UTC',
   });
 }
+
+export function shortDate(d: Date): string {
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+}

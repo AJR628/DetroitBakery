@@ -1,94 +1,122 @@
 ---
 import Base from '../layouts/Base.astro';
 import BakeryCard from '../components/BakeryCard.astro';
-import { getPublishedBakeries, nextPaczkiDay, longDate } from '../lib/bakery';
+import Tile from '../components/Tile.astro';
+import { getPublishedBakeries, nextPaczkiDay, shortDate } from '../lib/bakery';
 
 const bakeries = await getPublishedBakeries();
-const withLeadTime = bakeries.filter((b) => b.data.customCakeLeadTime);
 const featured = bakeries.slice(0, 6);
 const pd = nextPaczkiDay();
+const cities = [...new Set(bakeries.map((b) => b.data.city))];
 
-const title = 'Detroit Bakery: a verified guide to Detroit area bakeries';
+const title = 'Detroit Bakery: a hand-checked guide to Detroit area bakeries';
 const description =
-  'An independent, regularly checked guide to bakeries in Detroit and nearby cities. Custom cake lead times, paczki details, hours and dietary options, each with the date we last confirmed it.';
+  'Bakeries in Detroit, Hamtramck, Dearborn and beyond. Custom cake lead times, paczki details, hours and dietary options, each with the date we last checked it.';
 ---
 
 <Base title={title} description={description} canonicalPath="/">
-  <section class="wrap hero">
-    <h1>The Detroit bakery facts that are actually current</h1>
-    <p class="lede">
-      Most bakery lists tell you a place exists. This one tells you what you need to
-      decide: how far ahead a custom cake has to be ordered, who is open on Sunday, who
-      sells paczki year round, and what the bakery itself publishes about prices. Every
-      profile shows the date a person last checked it.
-    </p>
-    <div class="actions">
-      <a class="btn" href="/bakeries/">Browse all {bakeries.length} bakeries</a>
-      <a class="btn ghost" href="/custom-cakes/">Custom cake lead times</a>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="note">
-      <p>
-        <strong>Why this exists.</strong> Detroit bakery roundups go stale. Articles still
-        recommend places that changed their hours, stopped taking custom orders, or closed.
-        We keep a small set of listings and re-check them rather than a large set we cannot
-        maintain. If something here is wrong,
-        <a href="/update-listing/">tell us and we will fix it</a>.
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">a guide to</span>
+        <h1>Detroit, one bakery at a time</h1>
+      </div>
+      <p class="lede">
+        {bakeries.length} bakeries across {cities.length} cities. Checked by hand, and every
+        page tells you when.
       </p>
+      <div class="actions">
+        <a class="btn" href="/bakeries/">Start exploring</a>
+        <a class="btn ghost" href="/custom-cakes/">I need a cake</a>
+      </div>
     </div>
+    <img
+      class="hero-band"
+      src="/img/hero-street.jpg"
+      alt="Illustration of a row of brick storefronts on a Detroit street"
+      width="2000"
+      height="848"
+      fetchpriority="high"
+    />
   </section>
 
-  <section class="wrap">
-    <h2>Planning something specific</h2>
-    <ul class="grid">
-      <li class="card">
-        <h3><a href="/custom-cakes/">Ordering a custom cake</a></h3>
-        <p class="where">Lead times and ordering process</p>
-        <ul class="facts">
-          <li>
-            {withLeadTime.length > 0
-              ? `${withLeadTime.length} ${withLeadTime.length === 1 ? 'bakery has' : 'bakeries have'} a published lead time or ordering process`
-              : 'Lead times collected bakery by bakery'}
-          </li>
-          <li>The question no listing site answers: how far ahead do I need to ask</li>
-        </ul>
-      </li>
-      <li class="card">
-        <h3><a href="/paczki/">Paczki and Fat Tuesday</a></h3>
-        <p class="where">Next Paczki Day is {longDate(pd)}</p>
-        <ul class="facts">
-          <li>Who sells paczki year round, not just in February</li>
-          <li>Box options and published prices where the bakery lists them</li>
-        </ul>
-      </li>
+  <section class="band wrap">
+    <div class="band-head">
+      <div class="rule"><span>&#10022;</span></div>
+      <h2>What are you planning?</h2>
+      <p>Four ways in, depending on what you actually need.</p>
+    </div>
+
+    <ul class="tiles">
+      <Tile
+        href="/custom-cakes/"
+        img="/img/tile-cakes.jpg"
+        alt="Illustration of a ribboned bakery box and rolling pin on a floured table"
+        pill="Ordering ahead"
+        label="Custom Cakes"
+        sub="Who takes orders, and how far ahead you need to ask."
+        eager={true}
+      />
+      <Tile
+        href="/paczki/"
+        img="/img/wycinanki.jpg"
+        alt="Polish wycinanki paper-cut folk pattern with roosters and tulips"
+        pill={`Next: ${shortDate(pd)}`}
+        label="Pączki"
+        sub="Hamtramck, Fat Tuesday, and who sells them all year."
+      />
+      <Tile
+        href="/bakeries/#city=Dearborn"
+        img="/img/tile-dearborn.jpg"
+        alt="Levantine geometric tile pattern in brick red, ochre and sage"
+        pill="Dearborn"
+        label="Baklawa & Kunafa"
+        sub="The Middle Eastern pastry houses on Warren and Schaefer."
+      />
+      <Tile
+        href="/bakeries/"
+        img="/img/tile-map.jpg"
+        alt="Hand-drawn illustrated map of a city neighbourhood with landmark buildings"
+        pill="Browse all"
+        label="By Neighbourhood"
+        sub="Every bakery in the guide, filterable by city and by what they offer."
+      />
     </ul>
   </section>
 
-  {
-    featured.length > 0 && (
-      <section class="wrap">
-        <h2>Recently verified</h2>
-        <ul class="grid">
-          {featured.map((b) => (
-            <BakeryCard bakery={b} />
-          ))}
-        </ul>
-        <p style="margin-top:1.2rem">
-          <a href="/bakeries/">See every bakery we have verified</a>
-        </p>
-      </section>
-    )
-  }
+  <section class="band tinted">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="rule"><span>&#10022;</span></div>
+        <span class="eyebrow">recently checked</span>
+        <h2>In the guide</h2>
+      </div>
+      <ul class="grid">
+        {featured.map((b) => <BakeryCard bakery={b} />)}
+      </ul>
+      <div class="actions" style="justify-content:center;margin-top:2.2rem">
+        <a class="btn ghost" href="/bakeries/">See all {bakeries.length}</a>
+      </div>
+    </div>
+  </section>
 
-  <section class="wrap narrow">
-    <h2>Own one of these bakeries?</h2>
+  <div
+    class="folk-band"
+    style="background-image:url('/img/wycinanki.jpg')"
+    role="presentation"
+  >
+  </div>
+
+  <section class="band wrap narrow" style="text-align:center">
+    <span class="eyebrow">for bakers</span>
+    <h2>Is this your bakery?</h2>
     <p>
-      Listings are free and always will be. We are not a lead broker and we do not sell
-      placement above the standard list. If a detail about your bakery is wrong or missing,
-      <a href="/update-listing/">send us a correction</a> and we will update it, usually
-      within a week.
+      Listings are free and stay free. If something here is wrong, tell us and we will fix
+      it, usually within a week.
     </p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn ghost" href="/update-listing/">Correct a listing</a>
+      <a class="btn ghost" href="/submit-a-bakery/">Suggest a bakery</a>
+    </div>
   </section>
 </Base>
