@@ -4,3 +4,7 @@ dist/
 .env
 .DS_Store
 .netlify/
+
+# Generated at build time from assets/img-b64 by scripts/decode-images.mjs
+public/img/*.jpg
+public/img/*.png

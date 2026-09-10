@@ -118,14 +118,24 @@ const here = Astro.url.pathname;
       </div>
     </footer>
   <script is:inline>
-      document.addEventListener(
-        'error',
-        function (e) {
-          var t = e.target;
-          if (t && t.tagName === 'IMG') t.classList.add('failed');
-        },
-        true
-      );
+      // Hide images that fail to load so the panel behind reads as intentional.
+      // Also sweep on load, because eager images can fail before this listener
+      // attaches and would otherwise keep a broken icon.
+      (function () {
+        function mark(img) {
+          if (img.complete && img.naturalWidth === 0) img.classList.add('failed');
+        }
+        document.addEventListener(
+          'error',
+          function (e) {
+            if (e.target && e.target.tagName === 'IMG') e.target.classList.add('failed');
+          },
+          true
+        );
+        window.addEventListener('load', function () {
+          document.querySelectorAll('img').forEach(mark);
+        });
+      })();
     </script>
   </body>
 </html>

@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "prebuild": "node scripts/decode-images.mjs",
+    "images": "node scripts/decode-images.mjs"
   },
   "author": "",
   "license": "ISC",
