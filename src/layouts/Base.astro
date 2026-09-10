@@ -117,5 +117,15 @@ const here = Astro.url.pathname;
         <p class="fine">&copy; {new Date().getFullYear()} Detroit Bakery</p>
       </div>
     </footer>
+  <script is:inline>
+      document.addEventListener(
+        'error',
+        function (e) {
+          var t = e.target;
+          if (t && t.tagName === 'IMG') t.classList.add('failed');
+        },
+        true
+      );
+    </script>
   </body>
 </html>
