@@ -2,39 +2,48 @@
   "name": "Detroit Institute of Bagels",
   "slug": "detroit-institute-of-bagels",
   "businessId": "dib-001",
-  "publication": "published",
-  "operational": "operating",
+  "publication": "draft",
+  "operational": "permanently_closed",
   "city": "Detroit",
   "state": "MI",
   "website": "https://www.detroitinstituteofbagels.com",
-  "summary": "Detroit Institute of Bagels (DIB) produces traditional scratch-made bagels using 24-hour cold fermentation, a classic boiling step, and stone-hearth baking. After a closure in 2020, the bakery reopened in 2023 at its current Grand River Avenue location. The shop closes early when daily batches sell out, so early arrival is recommended. DIB also offers specialty sandwiches and premium deli goods.",
+  "summary": "Permanently closed. Detroit Institute of Bagels operated in Corktown from 2013 until a pandemic-era closure in 2020, reopened at 4884 Grand River Avenue in Core City in February 2023, and closed abruptly in July 2024 immediately after the business was sold to developer Philip Kafka of Prince Concepts, who terminated the remaining staff. No reopening followed. The Grand River Avenue space was taken over by Bev's Bagels, a separate business from chef Max Sussman, announced in April 2025. DIB's own website still advertises the 2023 reopening and daily hours; that copy predates the sale and is not current.",
   "tags": ["bagels", "deli", "artisan", "scratch-made", "detroit"],
-  "hours": {
-    "mon": "Closed",
-    "tue": "7am - 2pm",
-    "wed": "7am - 2pm",
-    "thu": "7am - 2pm",
-    "fri": "7am - 2pm",
-    "sat": "8am - 3pm",
-    "sun": "8am - 3pm"
-  },
-  "hoursNote": "May close early when daily batches sell out. Monday is Baker's Rest.",
+  "hoursNote": "Permanently closed. Any hours still published on the bakery's own website predate the July 2024 closure.",
   "customCakes": "no",
   "paczki": "no",
   "paczkiYearRound": "no",
   "vegan": "unknown",
   "glutenFree": "unknown",
   "halal": "unknown",
-  "openSunday": "yes",
+  "openSunday": "no",
   "seating": "unknown",
   "delivery": "unknown",
   "sources": [
     {
+      "url": "https://www.crainsdetroit.com/restaurants/detroit-institute-bagels-closes-after-sale-philip-kafka/",
+      "label": "Crain's Detroit Business, \"Detroit Institute of Bagels abruptly closes following sale to developer\"",
+      "checked": "2026-09-11",
+      "note": "Published 2024-07-24. Business closed immediately after the sale to Philip Kafka was completed."
+    },
+    {
+      "url": "https://www.bridgedetroit.com/detroit-institute-of-bagels-sold-to-philip-kafka-abruptly-closes/",
+      "label": "BridgeDetroit, \"Detroit Institute of Bagels sold to developer who closes shop\"",
+      "checked": "2026-09-11",
+      "note": "Published 2024-07-24. Kafka emailed remaining staff terminating them; doors closed indefinitely. Independent confirmation of the Crain's report."
+    },
+    {
+      "url": "https://detroit.eater.com/2025/4/10/24404670/bevs-bagels-detroit-preview-chef-max-sussman-alos-restaurant-ann-arbor",
+      "label": "Eater Detroit, Bev's Bagels to open in the former DIB space",
+      "checked": "2026-09-11",
+      "note": "Published 2025-04-10. Confirms 4884 Grand River Ave is now Bev's Bagels, a separate business, so the DIB location is not dormant but reoccupied."
+    },
+    {
       "url": "https://www.detroitinstituteofbagels.com/",
-      "label": "Official website homepage",
-      "checked": "2026-09-10",
-      "note": "Confirmed hours Tue-Fri 7am-2pm, Sat-Sun 8am-3pm, Monday closed, Grand River Ave address, re-opened 2023, early-close policy when sold out"
+      "label": "Official website homepage (stale)",
+      "checked": "2026-09-11",
+      "note": "Still advertises the 2023 Grand River reopening and daily hours. Contradicted by two independent news sources; retained here only to record that the site is out of date."
     }
   ],
-  "verifiedOn": "2026-09-10"
+  "verifiedOn": "2026-09-11"
 }
